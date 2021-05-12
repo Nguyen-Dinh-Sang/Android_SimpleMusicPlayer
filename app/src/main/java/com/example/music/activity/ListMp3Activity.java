@@ -2,6 +2,7 @@ package com.example.music.activity;
 
 import android.Manifest;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 
 public class ListMp3Activity extends AppCompatActivity {
     private final int MY=1;
-    ArrayList<String> arrayList,arraylink;
+    private ArrayList<String> arrayList,arraylink;
     ListView listView;
     ArrayAdapter<String> adapter;
     @Override
@@ -70,11 +71,9 @@ public class ListMp3Activity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(ListMp3Activity.this, Processing.class);
-//                intent.putExtra("ten",arrayList.get(position));
-//                intent.putExtra("link",arraylink.get(position));
-//                setResult(200,intent);
-//                finish();
+                Intent intent = new Intent(ListMp3Activity.this, PlayActivity.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
             }
         });
     }
