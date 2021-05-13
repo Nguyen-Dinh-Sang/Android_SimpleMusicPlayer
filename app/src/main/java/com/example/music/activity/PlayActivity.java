@@ -36,7 +36,7 @@ public class PlayActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView textViewTimeSong, textViewTotalTime;
     SeekBar seekBar;
-    ImageButton imageButtonPlay, imageButtonRepeat, imageButtonNext, imageButtonPre, imageButtonRandom;
+    ImageButton imageButtonPlay, imageButtonRepeat, imageButtonNext, imageButtonPre, imageButtonRandom, imageButtonRepeatBg, imageButtonRandomBg;
     ViewPager viewPager;
     public static ArrayList<String>  arrayList = new ArrayList<>();
     public static ArrayList<String> arrayLink = new ArrayList<>();
@@ -109,12 +109,12 @@ public class PlayActivity extends AppCompatActivity {
                 if (repeat == false) {
                     if (checkradom == true) {
                         checkradom = false;
-                        imageButtonRandom.setBackgroundColor(Color.TRANSPARENT);
+                        imageButtonRandomBg.setImageResource(android.R.color.transparent);
                     }
-                    imageButtonRepeat.setBackgroundColor(Color.WHITE);
+                    imageButtonRepeatBg.setImageResource(R.drawable.ic_rec);
                     repeat = true;
                 } else {
-                    imageButtonRepeat.setBackgroundColor(Color.TRANSPARENT);
+                    imageButtonRepeatBg.setImageResource(android.R.color.transparent);
                     repeat = false;
                 }
             }
@@ -126,12 +126,12 @@ public class PlayActivity extends AppCompatActivity {
                 if (checkradom == false) {
                     if (repeat == true) {
                         repeat = false;
-                        imageButtonRepeat.setBackgroundColor(Color.TRANSPARENT);
+                        imageButtonRepeatBg.setImageResource(android.R.color.transparent);
                     }
-                    imageButtonRandom.setBackgroundColor(Color.WHITE);
+                    imageButtonRandomBg.setImageResource(R.drawable.ic_rec);
                     checkradom = true;
                 } else {
-                    imageButtonRandom.setBackgroundColor(Color.TRANSPARENT);
+                    imageButtonRandomBg.setImageResource(android.R.color.transparent);
                     checkradom = false;
                 }
             }
@@ -257,9 +257,11 @@ public class PlayActivity extends AppCompatActivity {
         seekBar = findViewById(R.id.sb_play);
         imageButtonPlay = findViewById(R.id.ib_play);
         imageButtonRepeat = findViewById(R.id.ib_repeat);
+        imageButtonRepeatBg = findViewById(R.id.ib_repeatbg);
         imageButtonNext = findViewById(R.id.ib_next);
         imageButtonPre = findViewById(R.id.ib_review);
         imageButtonRandom = findViewById(R.id.ib_suffle);
+        imageButtonRandomBg = findViewById(R.id.ib_sufflebg);
         viewPager = findViewById(R.id.vp_play);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -345,7 +347,7 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     private void timeSong() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mmm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
         textViewTotalTime.setText(simpleDateFormat.format(mediaPlayer.getDuration()));
         seekBar.setMax(mediaPlayer.getDuration());
         updateTime();
